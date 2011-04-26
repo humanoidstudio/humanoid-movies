@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @movie.name
+%p
+  %b Plot:
+  = @movie.plot
+%p
+  %b Imdb score:
+  = @movie.imdb_score
+%p
+  %b Runtime:
+  = @movie.runtime
+
+= link_to 'Edit', edit_movie_path(@movie)
+\|
+= link_to 'Back', movies_path

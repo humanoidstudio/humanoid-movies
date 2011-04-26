@@ -1,9 +1,22 @@
 MoviesPipcody::Application.routes.draw do
-  get "pages/home"
 
-  get "pages/about"
+  resources :movies
 
-  get "pages/contact"
+  get "movies/index"
+
+  get "movies/show"
+
+  get "movies/new"
+
+  get 'pages/home'
+  get 'pages/about'
+  get 'pages/contact'
+  get 'pages/help'
+  
+  root :to => 'pages#home'
+  match '/about',   :to => 'pages#about'
+  match '/contact', :to => 'pages#contact'
+  match '/help',    :to => 'pages#help'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

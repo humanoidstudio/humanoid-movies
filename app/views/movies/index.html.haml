@@ -1,0 +1,25 @@
+%h1 Listing movies
+
+%table
+  %tr
+    %th Name
+    %th Plot
+    %th Imdb score
+    %th Runtime
+    %th
+    %th
+    %th
+
+  - @movies.each do |movie|
+    %tr
+      %td= movie.name
+      %td= movie.plot
+      %td= movie.imdb_score
+      %td= movie.runtime
+      %td= link_to 'Show', movie
+      %td= link_to 'Edit', edit_movie_path(movie)
+      %td= link_to 'Destroy', movie, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Movie', new_movie_path
