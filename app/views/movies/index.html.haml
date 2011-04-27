@@ -3,6 +3,7 @@
 %table
   %tr
     %th Name
+    %th Published name
     %th Plot
     %th Imdb score
     %th Runtime
@@ -13,6 +14,7 @@
   - @movies.each do |movie|
     %tr
       %td= movie.name
+      %td= movie.published_name
       %td= movie.plot
       %td= movie.imdb_score
       %td= movie.runtime

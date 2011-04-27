@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110426104017) do
+ActiveRecord::Schema.define(:version => 20110427050055) do
 
   create_table "movies", :force => true do |t|
     t.string   "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20110426104017) do
     t.integer  "runtime"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "published_name"
   end
 
 end
