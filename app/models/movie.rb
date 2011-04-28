@@ -19,11 +19,13 @@ class Movie < ActiveRecord::Base
   validates :name,
             :presence => { :if => Proc.new { |m| m.published_name.blank? } },
             :uniqueness => { :scope => :year,
-                             :unless => Proc.new { |m| m.name.nil? } }
+                             :unless => Proc.new { |m| m.name.nil? ||
+                                                       m.name.blank? } }
   validates :published_name,
             :presence => { :if => Proc.new { |a| a.name.blank? } },
             :uniqueness => { :scope => :year,
-                             :unless => Proc.new { |m| m.published_name.nil? } }
+                             :unless => Proc.new { |m| m.published_name.nil? ||
+                                                       m.published_name.blank? } }
   validates :year,
             :allow_blank => true,
             :numericality => { :only_integer => true,
