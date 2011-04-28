@@ -79,7 +79,8 @@ describe Movie do
     wrong_score_1 = Movie.new(@attr.merge(:imdb_score => "wrong"))
     wrong_score_2 = Movie.new(@attr.merge(:imdb_score => "11"))
     wrong_score_3 = Movie.new(@attr.merge(:imdb_score => "-1"))
-    [wrong_score_1, wrong_score_2, wrong_score_3].each do |w|
+    wrong_score_4 = Movie.new(@attr.merge(:imdb_score => "1.22"))
+    [wrong_score_1, wrong_score_2, wrong_score_3, wrong_score_4].each do |w|
       w.should_not be_valid
     end
   end
