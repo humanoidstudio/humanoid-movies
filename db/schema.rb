@@ -10,12 +10,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110427083847) do
+ActiveRecord::Schema.define(:version => 20110428155926) do
 
   create_table "movies", :force => true do |t|
     t.string   "name"
     t.text     "plot"
-    t.float    "imdb_score"
+    t.decimal  "imdb_score"
     t.integer  "runtime"
     t.datetime "created_at"
     t.datetime "updated_at"
