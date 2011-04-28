@@ -1,12 +1,12 @@
 # == Schema Information
-# Schema version: 20110427083847
+# Schema version: 20110428155926
 #
 # Table name: movies
 #
 #  id             :integer         not null, primary key
 #  name           :string(255)
 #  plot           :text
-#  imdb_score     :float
+#  imdb_score     :decimal(, )
 #  runtime        :integer
 #  created_at     :datetime
 #  updated_at     :datetime
@@ -15,11 +15,26 @@
 #
 
 class Movie < ActiveRecord::Base
-  
-  validates_presence_of   :name, :if => Proc.new { |a| a.published_name.blank? }
-  validates_presence_of   :published_name, :if => Proc.new { |a| a.name.blank? }
-  validates_uniqueness_of :name, :scope => :year
-  validates_uniqueness_of :published_name, :scope => :year
-  validates_format_of     :year, :with => /^\d{4}$/, :allow_blank => true
-  validates_format_of     :imdb_score, :with => /^\d{1,2}(\.[0-9])?$/
+
+  validates :name,
+            :presence => { :if => Proc.new { |a| a.published_name.blank? } },
+            :uniqueness => { :scope => :year }
+  validates :published_name,
+            :presence => { :if => Proc.new { |a| a.name.blank? } },
+            :uniqueness => { :scope => :year }
+  validates :year,
+            :numericality => { :only_integer => true,
+                               :greater_than_or_equal_to => 1888,
+                               :less_than_or_equal_to => 2099 },
+            :allow_blank => true
+  validates :imdb_score,
+            :numericality => { :greater_than_or_equal_to => 0.0,
+                               :less_than_or_equal_to => 10.0 },
+            :allow_blank => true
+  validates :runtime,
+            :numericality => { :only_integer => true,
+                               :greater_than => 0 },
+            :allow_blank => true
+
 end
+
