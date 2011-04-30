@@ -1,5 +1,7 @@
 MoviesPipcody::Application.routes.draw do
 
+  resources :genres
+
   resources :movies
 
   get "movies/index"

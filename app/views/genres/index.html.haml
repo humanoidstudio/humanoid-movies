@@ -1,0 +1,19 @@
+%h1 Listing genres
+
+%table
+  %tr
+    %th Name
+    %th
+    %th
+    %th
+
+  - @genres.each do |genre|
+    %tr
+      %td= genre.name
+      %td= link_to 'Show', genre
+      %td= link_to 'Edit', edit_genre_path(genre)
+      %td= link_to 'Destroy', genre, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Genre', new_genre_path

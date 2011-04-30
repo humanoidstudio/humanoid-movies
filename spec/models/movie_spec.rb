@@ -103,5 +103,16 @@ describe Movie do
     blank_runtime = Movie.new(@attr.merge(:runtime => ""))
     blank_runtime.should be_valid
   end
+  
+  describe "genre association" do
+    
+    before(:each) do
+      @movie = Factory(:movie)
+    end
+    
+    it "should have a genres attribute" do
+      @movie.should respond_to(:genres)
+    end
+  end
 end
 
